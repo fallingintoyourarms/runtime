@@ -4,7 +4,7 @@
  * It is not a full supervisor/daemon; it exists to support the required CLI.
  */
 
-#define RUNTIME_STATE_FILE "/tmp/runtime.sh.state"
+#define RUNTIME_STATE_FILE "/tmp/runtime.state"
 
 static int state_append(pid_t pid, const char *cmd0)
 {

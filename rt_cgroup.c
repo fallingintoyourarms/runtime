@@ -123,7 +123,7 @@ static int cgroup_create(struct cgroup_limits *cg, pid_t container_pid)
         return 0;
     }
 
-    int n = snprintf(cg->path, sizeof(cg->path), "/sys/fs/cgroup/runtime.sh-%d", (int)container_pid);
+    int n = snprintf(cg->path, sizeof(cg->path), "/sys/fs/cgroup/runtime-%d", (int)container_pid);
     if (n <= 0 || (size_t)n >= sizeof(cg->path)) return -1;
 
     if (mkdir(cg->path, 0755) < 0) {

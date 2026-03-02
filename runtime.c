@@ -34,9 +34,9 @@ static void usage(FILE *f)
 {
     fprintf(f,
         "usage:\n"
-        "  runtime.sh run --root <path> [--hostname <name>] [--mem <size>] [--cpu <fraction>] [--pids <n>] [--net] <cmd> [args...]\n"
-        "  runtime.sh ps\n"
-        "  runtime.sh stop <pid>\n"
+        "  runtime run --root <path> [--hostname <name>] [--mem <size>] [--cpu <fraction>] [--pids <n>] [--net] <cmd> [args...]\n"
+        "  runtime ps\n"
+        "  runtime stop <pid>\n"
     );
 }
 
