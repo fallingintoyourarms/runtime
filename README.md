@@ -1,4 +1,4 @@
-# runtime.sh
+# runtime
 
 Minimal Linux container runtime I wrote mostly to mess around with C and learn Linux primitives.
 
