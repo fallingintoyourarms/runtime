@@ -16,8 +16,21 @@ gcc runtime.c -o runtime.sh
 sudo ./runtime.sh run --root <rootfs-path> [--hostname <name>] <cmd> [args...]
 ```
 
+Optional flags:
+
+```sh
+sudo ./runtime.sh run --root <rootfs-path> --mem 256m --cpu 0.5 --pids 128 --net <cmd> [args...]
+```
+
 Example:
 
 ```sh
 sudo ./runtime.sh run --root /srv/rootfs --hostname demo /bin/bash
+```
+
+## Other commands
+
+```sh
+./runtime.sh ps
+sudo ./runtime.sh stop <pid>
 ```

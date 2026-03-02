@@ -9,11 +9,24 @@ struct child_config {
     char **argv;
     const char *rootfs;
     const char *hostname;
+    int net_enabled;
+    int net_pipe_fd;
 };
 
 static int child_main(void *arg)
 {
     struct child_config *cfg = (struct child_config *)arg;
+
+    /* Network namespace configuration (Phase 3).
+     * This is performed before pivot_root/chroot so we can rely on the host's /sbin/ip
+     * being available. The parent creates a veth pair and moves one end into this netns.
+     */
+    if (cfg->net_enabled && cfg->net_pipe_fd >= 0) {
+        if (net_child_configure(cfg->net_pipe_fd) < 0) {
+            die_perror("net_child_configure");
+        }
+        cfg->net_pipe_fd = -1;
+    }
 
     /* sethostname(2) uses the UTS namespace (CLONE_NEWUTS) so it only affects
      * the container, not the host.
